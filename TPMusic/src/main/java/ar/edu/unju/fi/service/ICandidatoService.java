@@ -5,9 +5,12 @@ import ar.edu.unju.fi.Util.lista_candidatos;
 
 public interface ICandidatoService {
 	
+	
 	public Candidato getCandidato();
-	public void votosCandidato();
-	public lista_candidatos getListaCandidatos();
+	public lista_candidatos listaCandidatos();
+	public boolean guardarCandidato(Candidato candidato);
 	public Candidato buscarCandidato(int codigo);
+	public void modificarCandidato(Candidato candidato);
+	public void eliminarCandidato(int codigo);
 	
 }

@@ -1,15 +1,30 @@
 package ar.edu.unju.fi.Model;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
+
 import org.springframework.stereotype.Component;
 
 @Component
 public class Candidato {
 	
-	
+	/* @Min(value=5,message="debe ser mayor o igual a 5") */
 	private int codigo;
+	
+	@Size(min=3, max=100, message="El nombre debe tener entre 3 a 100 caracteres")
+	@NotEmpty(message="El nombre del alumno no puede ser vacío")
 	private String nombre;
+	
+	@Size(min=3, max=100, message="el genero musical debe tener entre 3 y 100 letras")
+	@NotEmpty(message="no puede ser vacío")
 	private String genero;
+	
+	@Size(min=3, max=100, message="entre 3 a 100 caracteres")
+	@NotEmpty(message="no puede ser vacío")
 	private String descripcion;
+	
+	
 	private int votos;
 	
 	

@@ -28,10 +28,12 @@ public class candidatoController {
 	private static final Log LOGGER = LogFactory.getLog(candidatoController.class);
 	//lista_candidatos listaCandidatos = new lista_candidatos();
 	
+	//lista candidato
 	
 	@GetMapping("/lista")
 	public String getlistaCandidatos(Model model) {
 		model.addAttribute("candidatos", candidatoService.listaCandidatos().getCandidatos());
+		LOGGER.info("Redirigiendo a al lista de candidatos");
 		return "lista_candidatos";
 	}
 	
@@ -44,7 +46,7 @@ public class candidatoController {
 		return "nuevo_candidato";
 	}
 	
-	//poner mensaje personalizado
+	
 	@PostMapping("/guardar")
 	public ModelAndView getListaCandidatos(@Validated @ModelAttribute("candidato")Candidato candidato,BindingResult bindingResult) {
 		if(bindingResult.hasErrors()) {
@@ -55,19 +57,21 @@ public class candidatoController {
 		
 		ModelAndView mav = new ModelAndView("redirect:/candidato/lista");
 		if(candidatoService.guardarCandidato(candidato)) {
-			LOGGER.info("Se agregó un objeto al arrayList de candidatos");
+			LOGGER.info("Se agregó " + candidato.getNombre()+" a la lista");
 		}
 		return mav;
 	}
 	
 	
+	//voto candidato
 	
-	//poner confirmacion de voto
 	@GetMapping("/voto/{codigo}")
 	public ModelAndView votoCandidato(@PathVariable (value="codigo") int codigo) {
 		ModelAndView mav = new ModelAndView("lista_candidatos");
 		candidatoService.buscarCandidato(codigo).setVotos(candidatoService.buscarCandidato(codigo).getVotos()+1);
+		String nombre= candidatoService.buscarCandidato(codigo).getNombre();
 		mav.addObject("candidatos",candidatoService.listaCandidatos().getCandidatos());
+		LOGGER.info("Se registro un voto a " + nombre );
 		return mav;
 	}
 	
@@ -82,7 +86,7 @@ public class candidatoController {
 		return mav;
 	}
 	
-	//poner confirmacion de edcion 
+	
 	@PostMapping("/modificar")
 	public ModelAndView modificarCandidato(@Validated @ModelAttribute("candidato") Candidato candidato,BindingResult bindingResult) {
 		if(bindingResult.hasErrors()) {
@@ -102,17 +106,20 @@ public class candidatoController {
 	@GetMapping("/eliminar/{codigo}")
 	public ModelAndView eliminarCandidato(@PathVariable("codigo")int codigo) {
 	ModelAndView mav= new ModelAndView("redirect:/candidato/lista");	
+	String nombre=candidatoService.buscarCandidato(codigo).getNombre();
 	candidatoService.eliminarCandidato(codigo);
-	LOGGER.info("se ha eliminado un objeto");
+	LOGGER.info("se ha eliminado a "+ nombre + " de la lista de candidatos" );
 	return mav;
 			
 		
 	}
 	
 	@GetMapping("/estado")
-	public String estadoVotacion(Model model) {
+	public String getEstadoVotacion(Model model) {
 		model.addAttribute("candidatos", candidatoService.listaCandidatos().getCandidatos());
-		return "estado votacion";
+		model.addAttribute("suma",candidatoService.sumaVotos());
+		LOGGER.info("Ver Estado de Votacion" );
+		return "estado_votacion";
 	}
 	
 	

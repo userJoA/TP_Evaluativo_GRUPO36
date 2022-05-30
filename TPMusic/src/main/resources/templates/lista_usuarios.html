@@ -7,9 +7,8 @@
 		<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
 	</head>
 	
-	<body class="container">
-		<header th:replace="/layouts/header :: header"></header>
-		<nav th:replace ="layouts/nav :: nav"></nav>
+	<body class="container-t">
+		
 		<div class="container container-sm-form">
 			
 			<h2 class="text-white">Usuarios</h2>
@@ -51,9 +50,9 @@
 				<br><br>
 				
 			</div>
-		
+			<a style="margin-left: 5px;" th:href="@{/principal}" id="cancel" class="btn btn-secondary">VOLVER</a>
 		</div>
-		<footer th:replace="/layouts/footer :: footer"></footer>
+		
 		
 	</body>
 </html>

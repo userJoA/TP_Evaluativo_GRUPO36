@@ -11,7 +11,7 @@
 <body>
 	<header th:replace="layouts/header :: header"></header>
 	<nav th:replace="layouts/nav :: nav"></nav>
-	<div class="container">
+	<div class="container-f">
 		<form th:action="@{/usuario/modificar}" method="post" th:object="${usuario}" class="row g-3">
 			<div class="col-md-12">
 				<label for="inputNumero" class="form-label">Id de Usuario</label>
@@ -50,6 +50,7 @@
 
 			<div class="col-12">
 				<button type="submit" class="btn btn-primary">Modificar</button>
+				<a style="margin-left: 5px;" th:href="@{/}" id="cancel" class="btn btn-secondary">Cancelar</a>
 			</div>
 		</form>
 	</div>

@@ -3,17 +3,19 @@ package ar.edu.unju.fi.Model;
 import java.time.LocalDate;
 
 import javax.validation.constraints.Email;
-
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
-
+import org.springframework.stereotype.Component;
+@Component
 public class Usuario {
 	
-	@NotEmpty(message="El título no puede ser vacío")
+	private int numero;
+	@NotEmpty(message="El nombre no puede ser vacío")
 	@Size(min=1,max=68,message="El tamaño del nombre no es valido")
 	@Pattern(
 			regexp ="^([a-zA-Z\\w]+(\\s[a-zA-Z\\w]+)*)$", 
@@ -30,33 +32,31 @@ public class Usuario {
 	@NotEmpty(message="El correo es requerido")
 	@Email(message = "Correo es no valido", regexp = "^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$")
 	private String email;
-	@NotEmpty(message="El correo es requerido")
-	@Pattern(
-			regexp ="^((\\d{2,4}|[(]\\d{2,4}[)])(\\s(15))?\\s?\\d{6,8}|(\\d{2,4}|[(]\\d{2,4}[)])(15)?\\d{6,8})$", 
-			message ="Debe tener código de área de 2 a 4 dígitos entre parentesis o sin ellos, separado del resto con un espacio, usar u omitir el 15, separado o junto al resto de 6 a 8 dígitos. Ejemplo: (999) 15 8887777, (999) 158887777 (999)158887777, 999 15 8887777, 999 158887777, 9998887777"
-			)
-	@NotNull (message="Fecha de Nacimiento")
-	@DateTimeFormat(pattern="yyyy-MM-dd")
+	@NotNull @Past(message="La fecha debe ser anterio a la actual")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate fecha;
 	private int edad;
 	private int voto;
 	private boolean fin_voto;
 	
 	public Usuario() {
-		
+		super();
 	}
 	
 	/**
 	 * Constructor con todos los atributos del objeto Alumno
-	 * @param dni Nro de DNI del alumno
-	 * @param nombre Nombres del alumno
-	 * @param apellido Apellidos del alumno
-	 * @param email Correo electrónico del alumno
-	 * @param telefono Telefono fijo o celular del alumno
+	 * @param id numero
+	 * @param nombre Nombres del usuario
+	 * @param apellido Apellidos del usuario
+	 * @param email Correo electrónico del usuario
+	 * @param fecha De nacimiento
+	 * @param edad De usuario
+	 * @param votos De usuario
+	 * @param boolean De fin de votos (True = 3 votos, False < 3 votos)
 	 */
-	public Usuario(String nombre, String apellido, String email, LocalDate fecha, int edad, int voto, boolean fin_voto) {
+	public Usuario(int numero, String nombre, String apellido, String email, LocalDate fecha, int edad, int voto, boolean fin_voto) {
 		super();
-		
+		this.numero = numero;
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.email = email;
@@ -66,11 +66,16 @@ public class Usuario {
 		this.fin_voto = fin_voto;
 	}
 
+	public void setNumero(int numero) {
+		this.numero=numero;
+	}
+	public int getNumero() {
+		return numero;
+	}
 	
 	public String getNombre() {
 		return nombre;
 	}
-	
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}

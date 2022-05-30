@@ -1,37 +1,50 @@
 package ar.edu.unju.fi.Controller;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+
 import ar.edu.unju.fi.Model.Usuario;
-import ar.edu.unju.fi.Util.lista_usuarios;
+import ar.edu.unju.fi.service.IUsuarioService;
 @Controller
 @RequestMapping("/usuario")
 
-
 public class UsuarioController {
+	@Autowired
+	@Qualifier("usuarioServiceList")
+	private IUsuarioService usuarioService;
 	private static final Log LOGGER = LogFactory.getLog(UsuarioController.class);
 	
 	
-	  @GetMapping("") 
-	  public String paginaListaUsuarios(Model model) { 
-	  lista_usuarios listaA= new lista_usuarios(); 
-	  model.addAttribute("usuarios", listaA.getUsuarios());
+	  @GetMapping("lista") 
+	  public String paginaListaUsuarios(Model model) {  
+	  model.addAttribute("usuarios", usuarioService.listaUsuario().getUsuarios());
+	  LOGGER.info("Redirigiendo a al lista de usuarios");
 	  return "lista_usuarios"; }
 	 
 	
 	@GetMapping("/nuevo")
 	public String getFormUsuarioPage(Model model) {
-		model.addAttribute("usuario", new Usuario());
+		model.addAttribute("usuario", usuarioService.getUsuario());
+		LOGGER.info("Redirigiendo a Cargarnuevo usuario");
 		return "nuevo_usuario";
 	}
 	
@@ -40,26 +53,50 @@ public class UsuarioController {
 	public ModelAndView guardarUsuario(@Validated @ModelAttribute("Usuario") Usuario usuario, BindingResult bindingResult) {
 		if(bindingResult.hasErrors()) {
 			LOGGER.error("No se cumplen las reglas de validación");
-			ModelAndView mav = new ModelAndView("nuevo_alumno");
+			ModelAndView mav = new ModelAndView("nuevo_usuario");
 			mav.addObject("usuario", usuario);
 			return mav;
 		}
-		ModelAndView mav = new ModelAndView("lista_usuarios");
-		lista_usuarios listaUsuario = new lista_usuarios();
+		ModelAndView mav = new ModelAndView("redirect:/usuario/lista");
 		
-		if(listaUsuario.getUsuarios().add(usuario)) {
-			LOGGER.info("Se guardó un objeto alumno en la lista de alumnos");
+		if(usuarioService.guardarUsuario(usuario)) {
+			LOGGER.info("Se guardó "+usuario.getNombre()+ " numero "+ usuario.getNumero() +" en la lista de Usuarios");
 		}
-		mav.addObject("usuarios", listaUsuario.getUsuarios());
 		return mav;
 	}
 	
-	@GetMapping("/lista")
-	public String getListaCursosPage(Model model) {
-		lista_usuarios listaUsuario = new lista_usuarios();
-		model.addAttribute("usuarios", listaUsuario.getUsuarios());
-		return "lista_usuarios";
+	@PostMapping("/modificar")
+	public ModelAndView modificarUsuario(@Validated @ModelAttribute("usuario") Usuario usuario,BindingResult bindingResult) {
+		if(bindingResult.hasErrors()) {
+			LOGGER.info("ocurrió un error "+usuario);
+			ModelAndView mav = new ModelAndView("editar_usuario");
+			mav.addObject("usuario", usuario);
+			return mav;
+		}
+		ModelAndView mav = new ModelAndView("redirect:/usuario/lista");
+		usuarioService.modificarUsuario(usuario);
+		return mav;
 	}
 	
-
+	@GetMapping("/editar/{numero}")
+	public ModelAndView getEditarUsuario(@PathVariable ("numero") int numero) {
+		ModelAndView mav = new ModelAndView("editar_usuario");
+		Usuario usuario=usuarioService.buscarUsuario(numero);
+		mav.addObject("usuario", usuario);
+		return mav;
+	}
+	
+	@GetMapping("/eliminar/{numero}")
+	public ModelAndView eliminarUsuario(@PathVariable("numero")int numero) {
+	ModelAndView mav= new ModelAndView("redirect:/usuario/lista");	
+	String nombre=usuarioService.buscarUsuario(numero).getNombre();
+	usuarioService.eliminarUsuario(numero);
+	LOGGER.info("se ha eliminado a "+ nombre + " de la lista de Usuarios" );
+	return mav;
+	}
+	@InitBinder     
+	public void initBinder(WebDataBinder binder){
+	     binder.registerCustomEditor(       Date.class,     
+	                         new CustomDateEditor(new SimpleDateFormat("dd/MM/yyyy"), true, 10));   
+	}
 }

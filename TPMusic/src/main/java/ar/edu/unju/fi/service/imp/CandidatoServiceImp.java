@@ -81,6 +81,17 @@ public class CandidatoServiceImp implements ICandidatoService {
 
 
 
+	@Override
+	public int sumaVotos() {
+		int suma=0;
+		for(Candidato c: listaCandidatos.getCandidatos()) {
+			suma+=c.getVotos();
+		}
+		return suma;
+	}
+
+
+
 	
 
 

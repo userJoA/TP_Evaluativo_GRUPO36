@@ -7,8 +7,8 @@
 	<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
 </head>
 <body>
-	<div>	
-			<a th:href="@{/candidato/nuevo}" id="nuevo" class="btn ">Nuevo</a>
+	<div class="container-t">	
+			<a th:href="@{/candidato/nuevo}" id="nuevo" class="btn btn-dark">Nuevo</a>
 			<table  class="table table-striped table-dark">
 						<tr>
 							<th>codigo</th>
@@ -34,7 +34,7 @@
 						</tr>
 					</table>
 				<br><br>
-				
+				<a style="margin-left: 5px;" th:href="@{/principal}" id="cancel" class="btn btn-secondary">VOLVER</a>
 	</div>
 </body>
 </html>

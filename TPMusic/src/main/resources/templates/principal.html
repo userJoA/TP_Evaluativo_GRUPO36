@@ -7,23 +7,28 @@
 	<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
 </head>
 <body>
-	<div class="container">
+
+	<div class="container-b">
+		<header th:replace ="layouts/header :: header"></header>
+		<nav th:replace ="layouts/nav :: nav"></nav>
 		<div class="row">
 			<!-- Cards -->
 			<div class="row">
 			<!-- CARDS -->
 			<div th:each="star : ${stars}" class="col-3"><!-- th:each="post:${posts}" -->
-				<div class="card" style="width: 18rem;">
-					  <img class="card-img-top" alt="..."><!-- th:src="@{/images/{name}(name=${post.uriImagen})}"  -->
+				<div class="card" style="width: 18rem; margin: 20px">
+					  <img  class="card-img-top" alt="..." src="../static/imagenes/tarjeta.jpg"><!-- th:src="@{/images/{name}(name=${post.uriImagen})}"  -->
 					  <div class="card-body">
 					    <h5 th:text="${star.nombre}" class="card-title"></h5><!-- th:text="${post.titulo}" -->
 					    <p th:text="${star.descripcion}" class="card-text"></p><!-- th:text="${post.descripcion}"  -->
-					    <a th:href="@{/eleccion?codigo={codigo}(codigo=${star.codigo})}" class="btn btn-primary">Go somewhere</a><!-- th:href="@{/demoSpring/viewPost?id={id}(id=${post.id})}"  -->
+					    <!-- <a th:href="@{/eleccion?codigo={codigo}(codigo=${star.codigo})}" class="btn btn-primary">Votar</a> --><!-- th:href="@{/demoSpring/viewPost?id={id}(id=${post.id})}"  -->
+					    <a th:href="@{/eleccion?codigo={codigo}(codigo=${star.codigo})}" class="btn btn-primary">Votar</a>
 					  </div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+	<footer th:replace="layouts/footer :: footer"></footer>
 </body>
 </html>

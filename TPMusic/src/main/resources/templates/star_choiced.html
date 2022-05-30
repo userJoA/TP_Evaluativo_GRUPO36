@@ -7,16 +7,19 @@
 	<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
 </head>
 <body>
-	<div class="container">
+	<div class="container-b">
+		
 		<div class="p-5 mb-4 bg-light border rounded-3">
+		<h1>Gracias Por Votar</h1>
 			<div class="container-fluid py-5">
 				<h1 th:text="${elegido.nombre}" class="display-5 fw-bold"></h1>
 				<p th:text="${elegido.descripcion}" class="lead"></p>
 				<hr class="my-4">
-				<h2 th:text="${elegido.votos}+' votos'" class="display-5 fw-bold" ></h2>				
+				<h2 th:text="${elegido.votos}+' votos'" class="display-5 fw-bold" ></h2>			
 			</div>
-				
+				<a style="margin-left: 5px;" th:href="@{/principal}" id="cancel" class="btn btn-secondary">VOLVER</a>
 		</div>
 	</div>
+	
 </body>
 </html>

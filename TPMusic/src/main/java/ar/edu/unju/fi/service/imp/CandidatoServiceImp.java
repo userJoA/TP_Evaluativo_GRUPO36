@@ -56,6 +56,7 @@ public class CandidatoServiceImp implements ICandidatoService {
 				c.setNombre(candidato.getNombre());
 				c.setGenero(candidato.getGenero());
 				c.setDescripcion(candidato.getDescripcion());
+				c.setVotos(candidato.getVotos());
 				
 			}
 		}

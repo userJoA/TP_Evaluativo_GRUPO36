@@ -9,16 +9,17 @@
 <body>
 	<div class="container">
 		<div class="row">
+<!-- 		<h5 th:text="${user.email}"></h5> -->
 			<!-- Cards -->
 			<div class="row">
 			<!-- CARDS -->
-			<div th:each="star : ${stars}" class="col-3"><!-- th:each="post:${posts}" -->
+			<div th:each="star : ${stars}" class="col-3">
 				<div class="card" style="width: 18rem;">
-					  <img class="card-img-top" alt="..."><!-- th:src="@{/images/{name}(name=${post.uriImagen})}"  -->
+					  <img class="card-img-top" alt="...">
 					  <div class="card-body">
-					    <h5 th:text="${star.nombre}" class="card-title"></h5><!-- th:text="${post.titulo}" -->
-					    <p th:text="${star.descripcion}" class="card-text"></p><!-- th:text="${post.descripcion}"  -->
-					    <a th:href="@{/eleccion?codigo={codigo}(codigo=${star.codigo})}" class="btn btn-primary">Go somewhere</a><!-- th:href="@{/demoSpring/viewPost?id={id}(id=${post.id})}"  -->
+					    <h5 th:text="${star.nombre}" class="card-title"></h5>
+					    <p th:text="${star.descripcion}" class="card-text"></p>
+					    <a th:href="@{/eleccion?codigo={codigo}(codigo=${star.codigo})}" class="btn btn-primary">Votar</a>
 					  </div>
 					</div>
 				</div>

@@ -8,6 +8,9 @@
 	</head>
 	
 	<body class="container-t">
+	
+		<header th:replace ="layouts/header :: header"></header>
+		<nav th:replace ="layouts/nav :: nav"></nav>
 		
 		<div class="container container-sm-form">
 			
@@ -27,6 +30,7 @@
 							<th>fecha</th>
 							<th>edad</th>
 							<th>votos</th>
+							<th>&nbsp</th>
 							<th>opciones</th>
 						</tr>	
 						<tr th:each="usuario: ${usuarios}">
@@ -53,6 +57,7 @@
 			<a style="margin-left: 5px;" th:href="@{/principal}" id="cancel" class="btn btn-secondary">VOLVER</a>
 		</div>
 		
+		<footer th:replace="layouts/footer :: footer"></footer>
 		
 	</body>
 </html>

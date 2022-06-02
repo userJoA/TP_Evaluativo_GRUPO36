@@ -1,15 +1,20 @@
 <!DOCTYPE html>
 <html lang='es' xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="ISO-8859-1">
-<title>Votaciones</title>
-<link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>	
-<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+	<meta charset="ISO-8859-1">
+	<title>Votaciones</title>
+	<link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>	
+	<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
 </head>
-<body class="container-b">
-<header th:replace ="layouts/header :: header"></header>
-<nav th:replace ="layouts/nav :: nav"></nav>
-<h1>¡Bienvenidos!</h1>
-<footer th:replace="layouts/footer :: footer"></footer>
+<body>
+	<div class="container-b">
+		
+		<header th:replace ="layouts/header :: header"></header>	
+	
+		<h1>¡Bienvenidos!</h1>
+	</div>
+	
+	<footer th:replace="layouts/footer :: footer"></footer>
+	
 </body>
 </html>

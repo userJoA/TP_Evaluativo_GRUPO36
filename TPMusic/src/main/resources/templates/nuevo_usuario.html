@@ -12,7 +12,7 @@
 	<header th:replace="layouts/header :: header"></header>
 	<nav th:replace="layouts/nav :: nav"></nav>
 	<div class="container-f">
-		<form th:action="@{/usuario/guardar}" method="post" th:object="${usuario}" class="row g-3">
+		<form th:action="@{/usuario/guardar}" method="post" th:object="${usuario}" class="col-10 offset-1 col-md-4 offset-md-4">
 			<div class="col-md-12">
 				<label for="inputCodigo" class="form-label">Id de Usuario</label>
 				<input th:field="*{numero}" type="number" class="form-control" id="inputU">

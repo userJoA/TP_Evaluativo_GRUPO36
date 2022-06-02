@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -17,6 +18,7 @@ import ar.edu.unju.fi.Util.lista_candidatos;
 import ar.edu.unju.fi.service.ICandidatoService;
 
 @Controller
+//@RequestMapping("/principal")
 public class PrincipalController {
 	
 	@Autowired

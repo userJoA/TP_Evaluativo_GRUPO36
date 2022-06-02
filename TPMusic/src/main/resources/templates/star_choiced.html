@@ -9,17 +9,22 @@
 <body>
 	<div class="container-b">
 		
-		<div class="p-5 mb-4 bg-light border rounded-3">
-		<h1>Gracias Por Votar</h1>
-			<div class="container-fluid py-5">
-				<h1 th:text="${elegido.nombre}" class="display-5 fw-bold"></h1>
+		<header th:replace ="layouts/header :: header"></header>
+		<nav th:replace ="layouts/nav :: nav"></nav>
+		
+		<h1 class="text-center text-white">Gracias Por Votar</h1>
+		<div class="col-8 offset-2 col-md-4 offset-md-4">
+			<div class="card  ">
+				<h1 th:text="${elegido.nombre}" class="display-5 fw-bold text-center"></h1>
 				<p th:text="${elegido.descripcion}" class="lead"></p>
 				<hr class="my-4">
-				<h2 th:text="${elegido.votos}+' votos'" class="display-5 fw-bold" ></h2>			
+				<h2 th:text="${elegido.votos}+' votos'" class="display-5 fw-bold text-center" ></h2>			
+			</div>
 			</div>
 				<a style="margin-left: 5px;" th:href="@{/principal}" id="cancel" class="btn btn-secondary">VOLVER</a>
 		</div>
-	</div>
+	
+	<footer th:replace="layouts/footer :: footer"></footer>
 	
 </body>
 </html>

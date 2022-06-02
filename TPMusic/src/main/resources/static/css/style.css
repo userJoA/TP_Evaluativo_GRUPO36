@@ -2,16 +2,23 @@
 
 *{
 	margin: 0;
-	box-sizing: border-box;
-	
+	box-sizing: border-box;	
+}
+
+#cabecera{
+	background-image: url("../imagenes/cabecera.jpg");
+}
+
+#cabecera p{
+	font-size: 2.2em;
+	font-family: Brush Script MT, Centaur, Chiller, Forte, Freestyle Script, Book Antigua,
 }
 
 .container-b{
-	background-image: url("../imagenes/fondo3.jpg");
-	background-size: 100%;
+	background-image: url("../imagenes/fondo.jpg");
+	background-size: cover;
 	height: 100vh;
-	background-repeat: no-repeat;
-	
+	background-repeat: no-repeat;	
 }
 
 .container-t{
@@ -27,15 +34,15 @@
 	height :100vh;
 	background-image: url("../imagenes/fondo4.jpg");
 	background-repeat:no-repeat;
-	background-size:100%;
+	background-size:cover;
 	padding: 30px;
 }
 
 form{
 	background-color:black;
 	color: white;
-	border-radius: 30px;
-	
+	padding: 6px;
+	margin-top:20px;	
 }
 
 img{
@@ -43,7 +50,11 @@ img{
 	
 }
 
-
 header{
 	height: auto;
+}
+
+footer{
+	height: 100px;
+	padding: 10px;
 }

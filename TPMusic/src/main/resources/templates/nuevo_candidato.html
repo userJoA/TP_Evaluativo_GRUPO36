@@ -10,16 +10,12 @@
 
 <body>
 		<div class="container-f">
-		
-			<header th:replace ="layouts/header :: header"></header>
-			<nav th:replace ="layouts/nav :: nav"></nav>
-		<div class="col-10 offset-1 col-md-4 offset-md-4">
 			<form th:action="@{/candidato/guardar}" method="post" th:object="${candidato}" class="row g-3">
 					  <div class="col-md-12">
 					    <label for="inputCodigo" class="form-label">Codigo</label>
 					    <input th:field="*{codigo}" type="number" class="form-control" id="inputECodigo">
 					    <!-- mostrar el mensaje asociado con la validación de codigo  -->
-						<div class="text-danger" th:if="${#fields.hasErrors('codigo')}" th:errors="*{codigo}"></div>
+						<div class="text-danger"  th:if="${#fields.hasErrors('codigo')}" th:errors="*{codigo}"></div>
 					  </div> 
 						
 					  <div class="col-md-12">
@@ -31,7 +27,19 @@
 					  
 					  <div class="col-md-12">
 					    <label for="inputGenero" class="form-label">Genero Musical</label>
-					    <input th:field="*{genero}" type="text" class="form-control" id="inputGenero">
+					    <!-- <input th:field="*{genero}" type="text" class="form-control" id="inputGenero"> -->
+					    <select th:field="*{genero}" class="form-control" id="InputGenero" style="padding: 5px">
+						  <option value ="" selected>Seleccione ...</option>
+						  <option value="Rock">Rock</option>
+						  <option value="Pop">Pop</option> 
+						  <option value="Reggeaton">Reggeaton</option>
+						  <option value="Cumbia">Cumbia</option> 
+						  <option value="Reggae">Reggae</option>
+						  <option value="Electro">Electro</option>
+						  <option value="Folclore">Folclore</option>
+						  <option value="Otro">Otro</option>   
+					</select>
+					   
 					    <!-- mostrar el mensaje asociado con la validación de genero musical  -->
 						<div class="text-danger" th:if="${#fields.hasErrors('genero')}" th:errors="*{genero}"></div>
 					  </div>
@@ -52,10 +60,6 @@
 					    <a style="margin-left: 5px;" th:href="@{/}" id="cancel" class="btn btn-secondary">Cancelar</a>
 					  </div>
 		   </form>
-		   </div>
 	</div>
-	
-	<footer th:replace="layouts/footer :: footer"></footer>
-	
 </body>
 </html>

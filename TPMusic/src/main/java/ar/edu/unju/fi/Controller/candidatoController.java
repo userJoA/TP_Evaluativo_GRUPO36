@@ -50,16 +50,26 @@ public class candidatoController {
 	@PostMapping("/guardar")
 	public ModelAndView getListaCandidatos(@Validated @ModelAttribute("candidato")Candidato candidato,BindingResult bindingResult) {
 		if(bindingResult.hasErrors()) {
+			LOGGER.info("No se cumple con los requisitos de Validacion");
 			ModelAndView mav = new ModelAndView("nuevo_candidato");
 			mav.addObject("candidato", candidato);
 			return mav;
 		}
-		
-		ModelAndView mav = new ModelAndView("redirect:/candidato/lista");
-		if(candidatoService.guardarCandidato(candidato)) {
-			LOGGER.info("Se agregó " + candidato.getNombre()+" a la lista");
+		//comprueba que no haya otro candidato con el mismo codigo
+		if(candidatoService.buscarCan(candidato.getCodigo())==true) {
+			
+			ModelAndView mav = new ModelAndView("nuevo_candidato");
+			mav.addObject("candidato", candidato);
+			
+			return mav;
 		}
-		return mav;
+		else {
+				ModelAndView mav = new ModelAndView("redirect:/candidato/lista");
+				if(candidatoService.guardarCandidato(candidato)) {
+					LOGGER.info("Se agregó " + candidato.getNombre()+" a la lista");
+					}
+				return mav;
+		}
 	}
 	
 	
@@ -115,11 +125,20 @@ public class candidatoController {
 	}
 	
 	@GetMapping("/estado")
-	public String getEstadoVotacion(Model model) {
-		model.addAttribute("candidatos", candidatoService.listaCandidatos().getCandidatos());
-		model.addAttribute("suma",candidatoService.sumaVotos());
-		LOGGER.info("Ver Estado de Votacion" );
-		return "estado_votacion";
+	public ModelAndView getEstadoVotacion(Model model) {
+		if(candidatoService.sumaVotos()==0)
+		{	
+			LOGGER.info("No hay votos" );
+			ModelAndView mav= new ModelAndView("redirect:/");
+			return mav;
+		}
+		else {
+			ModelAndView mav = new ModelAndView("estado_votacion");
+			mav.addObject("candidatos", candidatoService.listaCandidatos().getCandidatos());
+			mav.addObject("suma",candidatoService.sumaVotos());
+			LOGGER.info("Ver Estado de Votacion" );
+			return mav;
+		}
 	}
 	
 	

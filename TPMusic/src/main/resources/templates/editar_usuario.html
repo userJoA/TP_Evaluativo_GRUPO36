@@ -9,10 +9,11 @@
 </head>
 
 <body>
+	
+	<div class="container-f">
 	<header th:replace="layouts/header :: header"></header>
 	<nav th:replace="layouts/nav :: nav"></nav>
-	<div class="container-f">
-		<form th:action="@{/usuario/modificar}" method="post" th:object="${usuario}" class="row g-3">
+		<form th:action="@{/usuario/modificar}" method="post" th:object="${usuario}" class="col-10 offset-1 col-md-4 offset-md-4">
 			<div class="col-md-12">
 				<label for="inputNumero" class="form-label">Id de Usuario</label>
 				<input th:field="*{numero}" type="hidden" class="form-control" id="inputU">
@@ -53,8 +54,9 @@
 				<a style="margin-left: 5px;" th:href="@{/}" id="cancel" class="btn btn-secondary">Cancelar</a>
 			</div>
 		</form>
+		<footer th:replace="layouts/footer :: footer"></footer>
 	</div>
-	<footer th:replace="layouts/footer :: footer"></footer>
+	
 </body>
 
 </html>

@@ -3,6 +3,7 @@
 *{
 	margin: 0;
 	box-sizing: border-box;	
+	font-family: 'Montserrat', sans-serif;
 }
 
 #cabecera{
@@ -14,12 +15,30 @@
 	font-family: Brush Script MT, Centaur, Chiller, Forte, Freestyle Script, Book Antigua,
 }
 
+/* body */
 .container-b{
 	background-image: url("../imagenes/fondo.jpg");
 	background-size: cover;
 	height: 100vh;
-	background-repeat: no-repeat;	
+	background-repeat: no-repeat;
+	text-align: center;	
+	
 }
+
+/* tarjeta de index */
+.card-index{
+	background: black;
+	width:700px;
+	border-radius: 32px;
+	padding:50px;
+	margin: 0 auto;
+	
+	
+}
+
+
+
+/* contenedor de tablas */
 
 .container-t{
 	height :100vh;
@@ -30,6 +49,7 @@
 	
 }
 
+/* contenedor de formularios */
 .container-f{
 	height :100vh;
 	background-image: url("../imagenes/fondo4.jpg");
@@ -38,16 +58,40 @@
 	padding: 30px;
 }
 
+
+/* formularios */
 form{
 	background-color:black;
 	color: white;
-	padding: 6px;
-	margin-top:20px;	
+	padding: 15px;
+	margin-top:20px;
+	border-radius: 25px;
+	text-decoration: none;	
 }
 
+/* imagenes */
 img{
-	background-color: #2F77DF; 
+	background-color: white ;
+	height: auto;
+	width: auto;
+}
+
+/* tarjetas */
+.card{
+	height:auto;
+	width:auto;
+	background-color: black;
+	border-radius:0px 0px 35px 35px;
+	margin: 15px;
+	border: solid rgb(0, 0, 0);
+	font-size: 13px;
+}
+
+/* tabla  */
+table.table{
+	padding:25px;
 	
+	background-color: #2D2E34;
 }
 
 header{

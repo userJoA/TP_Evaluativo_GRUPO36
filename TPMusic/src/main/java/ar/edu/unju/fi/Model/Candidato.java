@@ -9,11 +9,11 @@ import org.springframework.stereotype.Component;
 @Component
 public class Candidato {
 	
-	/* @Min(value=5,message="debe ser mayor o igual a 5") */
+	@Min(value=0,message="debe ser mayor o igual a 5")
 	private int codigo;
 	
 	@Size(min=3, max=100, message="El nombre debe tener entre 3 a 100 caracteres")
-	@NotEmpty(message="El nombre del alumno no puede ser vacío")
+	@NotEmpty(message="El nombre no pude estar vacio")
 	private String nombre;
 	
 	@Size(min=3, max=100, message="el genero musical debe tener entre 3 y 100 letras")

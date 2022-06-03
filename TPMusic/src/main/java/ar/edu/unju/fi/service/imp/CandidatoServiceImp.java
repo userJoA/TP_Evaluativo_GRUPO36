@@ -93,6 +93,22 @@ public class CandidatoServiceImp implements ICandidatoService {
 
 
 
+	@Override
+	public boolean buscarCan(int codigo) {
+		boolean band=false;
+		for(Candidato candidato: listaCandidatos.getCandidatos()) {
+			if(candidato.getCodigo()==codigo)
+				{	
+					band=true;
+					break;
+				}
+		}
+		
+		return band;
+	}
+
+
+
 	
 
 

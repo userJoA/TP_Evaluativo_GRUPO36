@@ -12,17 +12,17 @@
 		<header th:replace ="layouts/header :: header"></header>	
 	
 		<h1>¡Bienvenidos!</h1>
-		<div class="card">
+		<div class="card-index">
 			<form th:action="@{/ingreso}" method="GET" th:object="${usuario}">
 				<div class="mb-3">
 					<label for="emailId" class="form-label">EMAIL</label> 
 					<input  th:field="*{email}" type="text" class="form-control" id="emailId" placeholder="Ingrese su email">
 				</div>
 				<div class="d-grid gap-2 d-md-flex justify-content-md-end">
-					<button class="btn btn-primary me-md-2" type="submit">Entrar</button>					 
+					<button class="btn btn-primary " type="submit" style="margin: auto; padding: 15px;" >Entrar</button>					 
 				</div>
 				<hr>
-				<a th:href="@{/usuario/nuevo}">Quiero registrarme</a>
+				<a style="text-decoration: none; color: white; padding: 15px;" class="btn-dark" th:href="@{/usuario/nuevo}">Quiero registrarme</a>
 			</form>
 		</div>
 	</div>

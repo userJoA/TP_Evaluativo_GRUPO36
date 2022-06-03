@@ -11,8 +11,7 @@
 <body>
 	
 	<div class="container-f">
-	<header th:replace="layouts/header :: header"></header>
-	<nav th:replace="layouts/nav :: nav"></nav>
+	
 		<form th:action="@{/usuario/guardar}" method="post" th:object="${usuario}" class="col-10 offset-1 col-md-4 offset-md-4">
 			<div class="col-md-12">
 				<label for="inputNumero" class="form-label">Id de Usuario</label>
@@ -49,14 +48,14 @@
 
 
 
-			<div class="col-12">
+			<div class="col-12" style="margin-top: 3px;">
 				<button type="submit" class="btn btn-primary">Guardar</button>
 				<a style="margin-left: 5px;" th:href="@{/}" id="cancel" class="btn btn-secondary">Cancelar</a>
 			</div>
 		</form>
-	<footer th:replace="layouts/footer :: footer"></footer>
-	</div>
 	
+	</div>
+	<footer th:replace="layouts/footer :: footer"></footer>
 </body>
 
 </html>

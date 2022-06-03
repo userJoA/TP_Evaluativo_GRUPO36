@@ -50,18 +50,16 @@ public class UsuarioController {
 	
 	
 	@PostMapping("/guardar")
-	public ModelAndView guardarUsuario(@Validated @ModelAttribute("Usuario") Usuario usuario, BindingResult bindingResult) {
+	public ModelAndView guardarUsuario(@Validated @ModelAttribute("usuario") Usuario usuario,BindingResult bindingResult) {
 		if(bindingResult.hasErrors()) {
-			LOGGER.error("No se cumplen las reglas de validación");
+			LOGGER.info("ocurrió un error "+usuario);
 			ModelAndView mav = new ModelAndView("nuevo_usuario");
 			mav.addObject("usuario", usuario);
 			return mav;
 		}
 		ModelAndView mav = new ModelAndView("redirect:/usuario/lista");
-		
-		if(usuarioService.guardarUsuario(usuario)) {
-			LOGGER.info("Se guardó "+usuario.getNombre()+ " numero "+ usuario.getNumero() +" en la lista de Usuarios");
-		}
+		usuarioService.guardarUsuario(usuario);
+		LOGGER.info("Se guardo "+usuario);
 		return mav;
 	}
 	

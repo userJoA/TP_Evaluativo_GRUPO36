@@ -7,31 +7,32 @@
 	<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
 </head>
 <body>
-
-	<div class="container-b">
-		
 		<header th:replace ="layouts/header :: header"></header>
 		<nav th:replace ="layouts/nav :: nav"></nav>
 
+   <div class="container-b" style="height: auto; width: auto;  padding: 50px;">
+		
 		<div class="row row-cols-12 row-cols-sm-2 row-cols-md-3 row-cols-lg-4">
 			<!-- CARDS -->
 			<div th:each="star : ${stars}" class="col-3">
 				<!-- th:each="post:${posts}" -->
-				<div class="col">
+				<div class="col-c">
 					<div class="card" style="width: 18rem; margin: 20px">
-						<img class="card-img-top" alt="..."	src="../static/imagenes/tarjeta.jpg">
+						<img class="card-img-top" alt="..."	src="https://cdn-icons-png.flaticon.com/512/195/195128.png">
 						<!-- th:src="@{/images/{name}(name=${post.uriImagen})}"  -->
-						<div class="card-body">
-							<h5 th:text="${star.nombre}" class="card-title"></h5>							
-							<p th:text="${star.descripcion}" class="card-text"></p>							
-							<a th:href="@{/eleccion?codigo={codigo}(codigo=${star.codigo})}"
-								class="btn btn-primary">Votar</a>
+						<div class="card-body" style="background-color: black; color: white; border-radius:0px 0px 35px 35px; border:bl solid;">
+							<h3 th:text="${star.nombre}" class="card-title"></h3>							
+							<p th:text="${star.descripcion}" class="card-text"></p>
+							<!-- <p th:text="Votos +': '+ ${star.votos}" class="card-text"></p>	 -->							
+							<a th:href="@{/eleccion?codigo={codigo}(codigo=${star.codigo})}" 
+							class="btn btn-danger" style="padding-left:15px; padding-right: 15px;">Votar</a>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+
 	
 	<footer th:replace="layouts/footer :: footer"></footer>
 	

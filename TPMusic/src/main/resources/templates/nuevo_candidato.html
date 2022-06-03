@@ -9,8 +9,10 @@
 </head>
 
 <body>
+		<header th:replace ="layouts/header :: header"></header>
+		<nav th:replace ="layouts/nav :: nav"></nav>
 		<div class="container-f">
-			<form th:action="@{/candidato/guardar}" method="post" th:object="${candidato}" class="row g-3">
+			<form th:action="@{/candidato/guardar}" method="post" th:object="${candidato}" class="col-10 offset-1 col-md-4 offset-md-4">
 					  <div class="col-md-12">
 					    <label for="inputCodigo" class="form-label">Codigo</label>
 					    <input th:field="*{codigo}" type="number" class="form-control" id="inputECodigo">
@@ -55,8 +57,8 @@
 					    <input th:field="*{votos}"  th:value=0 type="text" class="form-control" id="inputDescripcion" placeholder="Agrege un breve descripcion">
 					  </div> -->
 					  
-					  <div class="col-12">
-					    <button type="submit" class="btn btn-primary">Enviar</button>
+					  <div class="col-12" style="margin: 15px">
+					    <button  type="submit" class="btn btn-primary">Enviar</button>
 					    <a style="margin-left: 5px;" th:href="@{/}" id="cancel" class="btn btn-secondary">Cancelar</a>
 					  </div>
 		   </form>

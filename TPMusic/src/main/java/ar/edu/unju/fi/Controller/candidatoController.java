@@ -28,6 +28,8 @@ public class candidatoController {
 	private static final Log LOGGER = LogFactory.getLog(candidatoController.class);
 	//lista_candidatos listaCandidatos = new lista_candidatos();
 	
+	
+	
 	//lista candidato
 	
 	@GetMapping("/lista")
@@ -57,10 +59,8 @@ public class candidatoController {
 		}
 		//comprueba que no haya otro candidato con el mismo codigo
 		if(candidatoService.buscarCan(candidato.getCodigo())==true) {
-			
 			ModelAndView mav = new ModelAndView("nuevo_candidato");
 			mav.addObject("candidato", candidato);
-			
 			return mav;
 		}
 		else {
@@ -129,7 +129,7 @@ public class candidatoController {
 		if(candidatoService.sumaVotos()==0)
 		{	
 			LOGGER.info("No hay votos" );
-			ModelAndView mav= new ModelAndView("redirect:/");
+			ModelAndView mav= new ModelAndView("redirect:/principal");
 			return mav;
 		}
 		else {

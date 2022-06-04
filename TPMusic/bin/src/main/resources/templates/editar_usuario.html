@@ -9,13 +9,18 @@
 </head>
 
 <body>
-	<header th:replace ="layouts/header :: header"></header>
-	<nav th:replace ="layouts/nav :: nav"></nav>
-	<div class="container-f">
 	
+	<div class="container-f">
+	<header th:replace="layouts/header :: header"></header>
+	<nav th:replace="layouts/nav :: nav"></nav>
 		<form th:action="@{/usuario/modificar}" method="post" th:object="${usuario}" class="col-10 offset-1 col-md-4 offset-md-4">
 		
-			
+			<!-- <div class="col-md-12">
+				<label for="inputNumero" class="form-label">Id de Usuario</label>
+				<input th:field="*{numero}" type="hidden" class="form-control" id="inputU">
+
+				<div class="text-danger" th:if="${#fields.hasErrors('numero')}" th:errors="*{numero}"></div>
+			</div> -->
 
 			<div class="col-md-12">
 				<label for="inputNombre" class="form-label">Nombre</label>
@@ -50,9 +55,9 @@
 				<a style="margin-left: 5px;" th:href="@{/principal}" id="cancel" class="btn btn-secondary">Cancelar</a>
 			</div>
 		</form>
-		
+		<footer th:replace="layouts/footer :: footer"></footer>
 	</div>
-	<footer th:replace="layouts/footer :: footer"></footer>
+	
 </body>
 
 </html>

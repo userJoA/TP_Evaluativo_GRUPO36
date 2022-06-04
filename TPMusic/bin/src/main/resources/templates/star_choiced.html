@@ -7,12 +7,10 @@
 	<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
 </head>
 <body>
-<header th:replace ="layouts/header :: header"></header>
-	<!-- 
-		<nav th:replace ="layouts/nav :: nav"></nav> -->
 	<div class="container-b">
 		
-		
+		<!-- <header th:replace ="layouts/header :: header"></header>
+		<nav th:replace ="layouts/nav :: nav"></nav> -->
 		
 		<h1 class="text-center text-white" style="font-size: 50px;" th:text="'GRACIAS POR VOTAR ' + ${usuario.nombre}"></h1>
 		<div class="col-8 offset-2 col-md-4 offset-md-4">

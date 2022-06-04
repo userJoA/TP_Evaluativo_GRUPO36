@@ -7,8 +7,7 @@
 	<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
 </head>
 <body>
-		<header th:replace ="layouts/header :: header"></header>
-		<nav th:replace ="layouts/nav :: nav"></nav>
+		
    <div class="container-b" style="padding: 50px; height: auto;width: auto;" >
 		<h1 th:object="${usuario}" th:text="'Usuario: '+${usuario.nombre}" ></h1>
 		<h1 th:object="${usuario}" th:text="Votos+' '+realizados+': ' +${usuario.voto}" ></h1>

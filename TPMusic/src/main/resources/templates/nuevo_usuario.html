@@ -9,18 +9,12 @@
 </head>
 
 <body>
-	
+	<header th:replace ="layouts/header :: header"></header>
+	<nav th:replace ="layouts/nav :: nav"></nav>
 	<div class="container-f">
-	
+	<h4 class="text-white text-center">Registre sus datos para ir a votar</h4>
 		<form th:action="@{/votacion/vista}" method="post" th:object="${usuario}" class="col-10 offset-1 col-md-4 offset-md-4">
-			<div class="col-md-12">
-				<label for="inputNumero" class="form-label">Id de Usuario</label>
-				<input th:field="*{numero}" type="hidden" class="form-control" id="inputU">
-
-				<div class="text-danger" th:if="${#fields.hasErrors('numero')}" th:errors="*{numero}"></div>
-			</div>
-
-			<div class="col-md-12">
+		<div class="col-md-12">
 				<label for="inputNombre" class="form-label">Nombre</label>
 				<input th:field="*{nombre}" type="text" class="form-control" id="inputNombre">
 

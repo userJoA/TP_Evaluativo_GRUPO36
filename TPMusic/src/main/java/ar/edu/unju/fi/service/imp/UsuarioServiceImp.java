@@ -17,12 +17,12 @@ public class UsuarioServiceImp implements IUsuarioService {
 	
 
 	
-	@Override
-	public Usuario buscarUsuario(int numero) {
-		 Optional <Usuario> usuario= listaUsuarios.getUsuarios().stream().filter(a->a.getNumero() == numero).findFirst();
-		 return usuario.get();
+//	@Override
+//	public Usuario buscarUsuario(int numero) {
+//		 Optional <Usuario> usuario= listaUsuarios.getUsuarios().stream().filter(a->a.getNumero() == numero).findFirst();
+//		 return usuario.get();
 		
-	}
+//	}
 
 
 

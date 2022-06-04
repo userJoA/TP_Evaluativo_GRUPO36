@@ -14,8 +14,8 @@ public class lista_usuarios {
 
 	public lista_usuarios() {		
 		  usuarios=new ArrayList<>();			
-		  Usuario usuario1= new Usuario(1,"Jonatan", "Vera", "jana@mail.com",LocalDate.of(2,04,8)); 
-		  Usuario usuario2= new Usuario(2,"jona","V", "j@mail.com", LocalDate.of(1,02,9));		  
+		  Usuario usuario1= new Usuario("Jonatan", "Vera", "jana@mail.com",LocalDate.of(1992,04,8)); 
+		  Usuario usuario2= new Usuario("jona","V", "j@mail.com", LocalDate.of(2001,02,9));		  
 		  usuarios.add(usuario1);
 		  usuarios.add(usuario2);		 
 	}

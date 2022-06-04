@@ -7,8 +7,6 @@
 	<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
 </head>
 <body>
-<header th:replace ="layouts/header :: header"></header>
-	<nav th:replace ="layouts/nav :: nav"></nav>
 		<div class="container-t" style="text-align: center;">	
 		<h1 style="padding:25px; color: white; font-size: 35px;">Estado de votacion</h1>
 			<table class="table table-striped table-dark" >
@@ -26,7 +24,7 @@
 							<td th:text="${candidato.genero}"></td>
 							<td th:text="${candidato.descripcion}"></td>
 							<td th:text="${candidato.votos}"></td>
-							<td th:if="${suma > 0}" th:text="${candidato.votos*100/suma }" ></td>
+							<td th:text="${candidato.votos*100/suma }" ></td>
 						</tr>
 						<tr> <td th:text="'Total de votos: '+${suma}" ></td> </tr>
 						
@@ -36,6 +34,5 @@
 				<a style="padding: 20px;" th:href="@{/principal}" id="cancel" class="btn btn-warning">Menu</a>
 				
 	</div>
-	<footer th:replace="layouts/footer :: footer"></footer>
 </body>
 </html>

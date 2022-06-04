@@ -9,8 +9,6 @@
 </head>
 	
 <body>
-<header th:replace ="layouts/header :: header"></header>
-	<nav th:replace ="layouts/nav :: nav"></nav>
 	<div class="container-f">
 		<form th:action="@{/candidato/modificar}" method="post" th:object="${candidato}" class="row g-3">
 			  <div class="col-md-12">
@@ -61,6 +59,5 @@
 					  </div>
 		</form>
 	</div>
-	<footer th:replace="layouts/footer :: footer"></footer>
 </body>
 </html>

@@ -52,7 +52,7 @@ public class UsuarioController {
 	@PostMapping("/guardar")
 	public ModelAndView guardarUsuario(@Validated @ModelAttribute("usuario") Usuario usuario,BindingResult bindingResult) {
 		if(bindingResult.hasErrors()) {
-			LOGGER.info("ocurrió un error "+usuario);
+			LOGGER.info("ocurrió un error "+usuario.getNombre());
 			ModelAndView mav = new ModelAndView("nuevo_usuario");
 			mav.addObject("usuario", usuario);
 			return mav;
@@ -60,7 +60,7 @@ public class UsuarioController {
 		ModelAndView mav = new ModelAndView("redirect:/usuario/lista");
 
 		usuarioService.guardarUsuario(usuario);
-		LOGGER.info("Se guardo "+usuario);
+		LOGGER.info("Se guardo "+usuario.getNombre());
 		return mav;
 	}
 	

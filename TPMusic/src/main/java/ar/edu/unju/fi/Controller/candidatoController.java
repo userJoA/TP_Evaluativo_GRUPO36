@@ -126,19 +126,19 @@ public class candidatoController {
 	
 	@GetMapping("/estado")
 	public ModelAndView getEstadoVotacion(Model model) {
-		if(candidatoService.sumaVotos()==0)
-		{	
-			LOGGER.info("No hay votos" );
-			ModelAndView mav= new ModelAndView("redirect:/principal");
-			return mav;
-		}
-		else {
+		//if(candidatoService.sumaVotos()==0)
+		//{	
+			//LOGGER.info("No hay votos" );
+			//ModelAndView mav= new ModelAndView("redirect:/principal");
+			//return mav;
+		//}
+		//else {
 			ModelAndView mav = new ModelAndView("estado_votacion");
 			mav.addObject("candidatos", candidatoService.listaCandidatos().getCandidatos());
 			mav.addObject("suma",candidatoService.sumaVotos());
 			LOGGER.info("Ver Estado de Votacion" );
 			return mav;
-		}
+		//}
 	}
 	
 	

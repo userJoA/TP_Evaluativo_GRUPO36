@@ -15,14 +15,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class Usuario {
 	
-	private int numero;
 	
-	@NotEmpty(message="El nombre no puede ser vacío")
-	@Size(min=1,max=68,message="El tamaño del nombre no es valido")
-	@Pattern(
-			regexp ="^([a-zA-Z\\w]+(\\s[a-zA-Z\\w]+)*)$", 
-			message ="No se admiten espacios como único, primer, o último caracter"
-			)
 	private String nombre;
 	
 	@NotEmpty(message="El nombre es requerido")
@@ -65,21 +58,16 @@ public class Usuario {
 	 * @param votos De usuario
 	 * @param boolean De fin de votos (True = 3 votos, False < 3 votos)
 	 */
-	public Usuario(int numero, String nombre, String apellido, String email, LocalDate fecha) {
+	public Usuario(String nombre, String apellido, String email, LocalDate fecha) {
 		super();
-		this.numero = numero;
+		
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.email = email;
 		this.fecha = fecha;
 	}	
 		
-	public void setNumero(int numero) {
-		this.numero=numero;
-	}
-	public int getNumero() {
-		return numero;
-	}
+	
 	
 	public String getNombre() {
 		return nombre;

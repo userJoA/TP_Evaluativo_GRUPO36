@@ -9,7 +9,7 @@ public interface IUsuarioService {
 	public Usuario getUsuario();
 	public lista_usuarios listaUsuario();
 	public boolean guardarUsuario(Usuario usuario);
-	public Usuario buscarUsuario(int numero);
+	//public Usuario buscarUsuario(int numero);
 	public void modificarUsuario(Usuario usuario);
 	public void eliminarUsuario(String email);
 	public int sumaVotos();

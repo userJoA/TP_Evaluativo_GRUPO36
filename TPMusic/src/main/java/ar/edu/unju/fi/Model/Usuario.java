@@ -15,10 +15,15 @@ import org.springframework.stereotype.Component;
 @Component
 public class Usuario {
 	
-	
+	@NotEmpty(message="El nombre es requerido")
+	@Size(min=1,max=24,message="El tamaño del apellido no es valido")
+	@Pattern(
+			regexp ="^([a-zA-Z\\w]+(\\s[a-zA-Z\\w]+)*)$", 
+			message ="No se admiten espacios como único, primer, o último caracter"
+			)
 	private String nombre;
 	
-	@NotEmpty(message="El nombre es requerido")
+	@NotEmpty(message="El apellido es requerido")
 	@Size(min=1,max=24,message="El tamaño del apellido no es valido")
 	@Pattern(
 			regexp ="^([a-zA-Z\\w]+(\\s[a-zA-Z\\w]+)*)$", 

@@ -66,30 +66,34 @@ public class UsuarioController {
 	
 	@PostMapping("/modificar")
 	public ModelAndView modificarUsuario(@Validated @ModelAttribute("usuario") Usuario usuario,BindingResult bindingResult) {
-		if(bindingResult.hasErrors()) {
-			LOGGER.info("ocurrió un error "+usuario);
-			ModelAndView mav = new ModelAndView("editar_usuario");
-			mav.addObject("usuario", usuario);
-			return mav;
-		}
+		
+		  if(bindingResult.hasErrors()) {
+		  LOGGER.info("ocurrió un error "+usuario.getNombre()); ModelAndView mav = new ModelAndView("editar_usuario"); mav.addObject("usuario", usuario); 
+		  return mav; 
+		  }
+		 
 		ModelAndView mav = new ModelAndView("redirect:/usuario/lista");
 		usuarioService.modificarUsuario(usuario);
+		LOGGER.info("Se Modifico "+usuario.getNombre());
+		
 		return mav;
 	}
 	
-	@GetMapping("/editar/{numero}")
-	public ModelAndView getEditarUsuario(@PathVariable ("numero") int numero) {
+	@GetMapping("/editar/{email}")
+	public ModelAndView getEditarUsuario(@PathVariable ("email") String email) {
 		ModelAndView mav = new ModelAndView("editar_usuario");
-		Usuario usuario=usuarioService.buscarUsuario(numero);
+		Usuario usuario=usuarioService.buscarUsarioPorEmail(email);
 		mav.addObject("usuario", usuario);
 		return mav;
 	}
 	
-	@GetMapping("/eliminar/{numero}")
-	public ModelAndView eliminarUsuario(@PathVariable("numero")int numero) {
+	
+	
+	@GetMapping("/eliminar/{email}")
+	public ModelAndView eliminarUsuario(@PathVariable("email")String email) {
 	ModelAndView mav= new ModelAndView("redirect:/usuario/lista");	
-	String nombre=usuarioService.buscarUsuario(numero).getNombre();
-	usuarioService.eliminarUsuario(numero);
+	String nombre=usuarioService.buscarUsarioPorEmail(email).getNombre();
+	usuarioService.eliminarUsuario(email);
 	LOGGER.info("se ha eliminado a "+ nombre + " de la lista de Usuarios" );
 	return mav;
 	}

@@ -80,9 +80,10 @@ public class VotacionController {
     	
 		Optional<Candidato> artista = this.candidatoService.listaCandidatos().getCandidatos().stream().filter(candidato ->codigo == candidato.getCodigo()).findFirst();    	    	
     	artista.get().setVotos(artista.get().getVotos()+1);
+    	
     	Usuario u=usuarioService.buscarUsarioPorEmail(email);
     	u.setVoto(u.getVoto()+1);
-    	
+    	LOGGER.info("El usuario "+u.getNombre()+" Voto a: "+artista.get().getNombre());
     	modelAndView.addObject("elegido", artista.get()); 
     	modelAndView.addObject("usuario", u); 
 		return modelAndView;

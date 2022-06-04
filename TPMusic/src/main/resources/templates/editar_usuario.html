@@ -14,12 +14,13 @@
 	<header th:replace="layouts/header :: header"></header>
 	<nav th:replace="layouts/nav :: nav"></nav>
 		<form th:action="@{/usuario/modificar}" method="post" th:object="${usuario}" class="col-10 offset-1 col-md-4 offset-md-4">
-			<div class="col-md-12">
+		
+			<!-- <div class="col-md-12">
 				<label for="inputNumero" class="form-label">Id de Usuario</label>
 				<input th:field="*{numero}" type="hidden" class="form-control" id="inputU">
 
 				<div class="text-danger" th:if="${#fields.hasErrors('numero')}" th:errors="*{numero}"></div>
-			</div>
+			</div> -->
 
 			<div class="col-md-12">
 				<label for="inputNombre" class="form-label">Nombre</label>
@@ -36,7 +37,7 @@
 			</div>
 			<div class="col-12">
 				<label for="inputE" class="form-label">email</label>
-				<input th:field="*{email}" type="text" class="form-control" id="inputE" placeholder="Sucorreo">
+				<input th:field="*{email}" type="hidden" class="form-control" id="inputE" placeholder="Sucorreo">
 
 				<div class="text-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
 			</div>
@@ -51,7 +52,7 @@
 
 			<div class="col-12">
 				<button type="submit" class="btn btn-primary">Modificar</button>
-				<a style="margin-left: 5px;" th:href="@{/}" id="cancel" class="btn btn-secondary">Cancelar</a>
+				<a style="margin-left: 5px;" th:href="@{/principal}" id="cancel" class="btn btn-secondary">Cancelar</a>
 			</div>
 		</form>
 		<footer th:replace="layouts/footer :: footer"></footer>

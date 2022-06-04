@@ -8,7 +8,7 @@
 </head>
 <body>
 		
-   <div class="container-b" style="padding: 50px;" >
+   <div class="container-b" style="padding: 50px; height: auto;width: auto;" >
 		<h1 th:object="${usuario}" th:text="'Usuario: '+${usuario.nombre}" ></h1>
 		<h1 th:object="${usuario}" th:text="Votos+' '+realizados+': ' +${usuario.voto}" ></h1>
 		<h1 th:object="${usuario}" th:if="${usuario.voto} &gt; 2" th:text="'No puede realizar mas de 3 votos '"></h1>
@@ -42,6 +42,6 @@
 
 	
 
-	
+	<footer th:replace="layouts/footer :: footer"></footer>
 </body>
 </html>

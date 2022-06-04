@@ -11,7 +11,7 @@ public interface IUsuarioService {
 	public boolean guardarUsuario(Usuario usuario);
 	public Usuario buscarUsuario(int numero);
 	public void modificarUsuario(Usuario usuario);
-	public void eliminarUsuario(int numero);
+	public void eliminarUsuario(String email);
 	public int sumaVotos();
 	public int sacarEdad();
 	public boolean buscarEmail(String email);

@@ -11,7 +11,7 @@
 		<nav th:replace ="layouts/nav :: nav"></nav>
 
    <div class="container-b" style="height: auto; width: auto;  padding: 50px;">
-		
+		<h1 style="font-size: 50px;">CANDIDATOS</h1>
 		<div class="row row-cols-12 row-cols-sm-2 row-cols-md-3 row-cols-lg-4">
 			<!-- CARDS -->
 			<div th:each="star : ${stars}" class="col-3">
@@ -23,13 +23,16 @@
 						<div class="card-body" style="background-color: black; color: white; border-radius:0px 0px 35px 35px; border:bl solid;">
 							<h3 th:text="${star.nombre}" class="card-title"></h3>							
 							<p th:text="${star.descripcion}" class="card-text"></p>
-							<!-- <p th:text="Votos +': '+ ${star.votos}" class="card-text"></p>	 -->							
-							<a th:href="@{/eleccion?codigo={codigo}(codigo=${star.codigo})}" 
-							class="btn btn-danger" style="padding-left:15px; padding-right: 15px;">Votar</a>
+							<p th:text="'Tiene :'+${star.votos}+' voto/s'" class="card-text"></p>							
+							<!-- <a th:href="@{/eleccion?codigo={codigo}(codigo=${star.codigo})}" 
+							class="btn btn-danger" style="padding-left:15px; padding-right: 15px;">Votar</a> -->
 						</div>
 					</div>
 				</div>
 			</div>
+		</div>
+		<div class="container">
+				<a style="border-radius:25px; padding: 30px;" th:href="@{/}" id="cancel" class="btn btn-warning">ir a Inicio</a>
 		</div>
 	</div>
 

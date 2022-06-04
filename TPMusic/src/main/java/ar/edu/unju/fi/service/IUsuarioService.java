@@ -14,6 +14,8 @@ public interface IUsuarioService {
 	public void eliminarUsuario(int numero);
 	public int sumaVotos();
 	public int sacarEdad();
+	public boolean buscarEmail(String email);
+	public Usuario buscarUsarioPorEmail(String email);
 	
 	
 }

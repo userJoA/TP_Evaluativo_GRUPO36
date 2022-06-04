@@ -58,6 +58,7 @@ public class UsuarioController {
 			return mav;
 		}
 		ModelAndView mav = new ModelAndView("redirect:/usuario/lista");
+
 		usuarioService.guardarUsuario(usuario);
 		LOGGER.info("Se guardo "+usuario);
 		return mav;

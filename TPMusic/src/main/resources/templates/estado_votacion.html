@@ -26,11 +26,11 @@
 							<td th:text="${candidato.votos}"></td>
 							<td th:text="${candidato.votos*100/suma }" ></td>
 						</tr>
-						<tr> <td th:text="Total+' '+' '+ de +' '+ Votos+': ' + ${suma}" ></td> </tr>
+						<tr> <td th:text="'Total de votos: '+${suma}" ></td> </tr>
 						
 					</table>
 				<br><br>
-				<a style="padding: 20px;" th:href="@{/}" id="cancel" class="btn btn-warning">Inicio</a>
+				<!-- <a style="padding: 20px;" th:href="@{/}" id="cancel" class="btn btn-warning">Inicio</a> -->
 				<a style="padding: 20px;" th:href="@{/principal}" id="cancel" class="btn btn-warning">Menu</a>
 				
 	</div>

@@ -45,28 +45,37 @@ public class IndexController {
 	}
 	
 	
+	/*
+	 * @GetMapping("/ingreso") public ModelAndView
+	 * verificarDatosUsuario(@Validated @ModelAttribute("usuario") Usuario usuario,
+	 * BindingResult bindingResult,Model model) { String pagina = ""; ModelAndView
+	 * mav = new ModelAndView(""); LOGGER.info("usuario: " + usuario.getEmail());
+	 * for(int i=0; i<usuarioService.listaUsuario().getUsuarios().size(); i++) {
+	 * if(usuarioService.listaUsuario().getUsuarios().get(i).getEmail().equals(
+	 * usuario.getEmail())) {
+	 * LOGGER.info("usu "+usuarioService.listaUsuario().getUsuarios().get(i).
+	 * getEmail()); pagina="redirect:/principal"; mav.addObject("user",usuario);
+	 * model.addAttribute("stars",
+	 * this.candidatoService.listaCandidatos().getCandidatos()); LOGGER.
+	 * info("GET: /principal - METHOD: getPrincipalPage() - INFO: Mostar lista de candidatos en pág Principal"
+	 * ); for(Candidato p:this.candidatoService.listaCandidatos().getCandidatos()) {
+	 * LOGGER.info(p.toString()); } }else { pagina="redirect:/usuario/nuevo";
+	 * mav.addObject("usuario", new Usuario()); } } ModelAndView mavVerif = new
+	 * ModelAndView(pagina); return mavVerif; }
+	 */
+	
 	@GetMapping("/ingreso")
-	public ModelAndView verificarDatosUsuario(@Validated @ModelAttribute("usuario") Usuario usuario, BindingResult bindingResult,Model model) {
-		String pagina = "";
-		ModelAndView mav = new ModelAndView("");
-		LOGGER.info("usuario: " + usuario.getEmail());
-		for(int i=0; i<usuarioService.listaUsuario().getUsuarios().size(); i++) {
-			if(usuarioService.listaUsuario().getUsuarios().get(i).getEmail().equals(usuario.getEmail())) {				
-				LOGGER.info("usu "+usuarioService.listaUsuario().getUsuarios().get(i).getEmail());
-				pagina="redirect:/principal";
-				mav.addObject("user",usuario);
-				model.addAttribute("stars", this.candidatoService.listaCandidatos().getCandidatos());    	
-		    	LOGGER.info("GET: /principal - METHOD: getPrincipalPage() - INFO: Mostar lista de candidatos en pág Principal");    	
-		    	for(Candidato p:this.candidatoService.listaCandidatos().getCandidatos()) {
-		    		LOGGER.info(p.toString());
-		    	} 
-			}else {
-				pagina="redirect:/usuario/nuevo";
-				mav.addObject("usuario", new Usuario());
-			}
+	public ModelAndView verificarDatos(@ModelAttribute("usuario") Usuario usuario) {
+		if(usuarioService.buscarEmail(usuario.getEmail())) {
+			
+			ModelAndView mav = new ModelAndView("Votacion");
+			mav.addObject("stars", this.candidatoService.listaCandidatos().getCandidatos());
+			mav.addObject("usuario",usuarioService.buscarUsarioPorEmail(usuario.getEmail()));
+			return mav;
+		}else {
+			ModelAndView mav=new ModelAndView("redirect:/usuario/nuevo");
+			return mav;
 		}
-		ModelAndView mavVerif = new ModelAndView(pagina);
-		return mavVerif;
 	}
 
 }

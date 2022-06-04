@@ -9,19 +9,20 @@
 <body>
 	<div class="container-b">
 		
-		<header th:replace ="layouts/header :: header"></header>
-		<nav th:replace ="layouts/nav :: nav"></nav>
+		<!-- <header th:replace ="layouts/header :: header"></header>
+		<nav th:replace ="layouts/nav :: nav"></nav> -->
 		
-		<h1 class="text-center text-white">Gracias Por Votar</h1>
+		<h1 class="text-center text-white" style="font-size: 50px;" th:text="'GRACIAS POR VOTAR ' + ${usuario.nombre}"></h1>
 		<div class="col-8 offset-2 col-md-4 offset-md-4">
 			<div class="card  " style="background-color: white; border-radius: 32px; border: solid black; padding: 30px">
+				
 				<h1 th:text="${elegido.nombre}" class="display-5 fw-bold text-center"></h1>
 				<p th:text="${elegido.descripcion}" class="lead"></p>
 				<hr class="my-4">
-				<h2 th:text="${elegido.votos}+' votos'" class="display-5 fw-bold text-center" ></h2>			
+				<h2 th:text="'Tiene '+${elegido.votos}+' votos'" class="display-5 fw-bold text-center" ></h2>			
 			</div>
 			</div>
-				<a style="margin-left: 5px ;padding: 20px;" th:href="@{/principal}" id="cancel" class="btn btn-warning">Volver</a>
+				<!-- <a style="margin-left: 5px ;padding: 20px;" th:href="@{/principal}" id="cancel" class="btn btn-warning">Volver</a> -->
 				<a style="padding: 20px;" th:href="@{/candidato/estado}" id="cancel" class="btn btn-warning">Ver Votacion</a>
 		</div>
 	

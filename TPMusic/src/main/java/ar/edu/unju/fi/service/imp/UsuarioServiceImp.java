@@ -5,6 +5,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import ar.edu.unju.fi.Model.Candidato;
 import ar.edu.unju.fi.Model.Usuario;
 import ar.edu.unju.fi.Util.lista_usuarios;
 import ar.edu.unju.fi.service.IUsuarioService;
@@ -91,6 +92,28 @@ public class UsuarioServiceImp implements IUsuarioService {
 	public int sacarEdad() {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+
+
+	@Override
+	public boolean buscarEmail(String email) {
+		boolean band=false;
+		for(Usuario user:listaUsuarios.getUsuarios()) {
+			if(user.getEmail().equalsIgnoreCase(email)) {
+				band=true;
+				break;
+			}
+		}
+		return band;
+	}
+
+
+
+	@Override
+	public Usuario buscarUsarioPorEmail(String email) {
+		Optional <Usuario> user= listaUsuarios.getUsuarios().stream().filter(usuario -> usuario.getEmail().equalsIgnoreCase(email)).findFirst();
+		return user.get();
 	}
 
 

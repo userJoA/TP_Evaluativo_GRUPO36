@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+	<meta charset="UTF-8">
+	<title>A votar!!</title>
+	<link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/5.1.3/css/bootstrap.min.css}"/>
+	<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+</head>
+<body>
+		
+   <div class="container-b" style="padding: 50px;" >
+		<h1 th:object="${usuario}" th:text="'Usuario: '+${usuario.nombre}" ></h1>
+		<h1 th:object="${usuario}" th:text="Votos+' '+realizados+': ' +${usuario.voto}" ></h1>
+		<h1 th:object="${usuario}" th:if="${usuario.voto} &gt; 2" th:text="'No puede realizar mas de 3 votos '"></h1>
+		<div class="row row-cols-12 row-cols-sm-2 row-cols-md-3 row-cols-lg-4">
+			
+			<!-- CARDS -->
+			
+			<div th:each="star : ${stars}" class="col-3">
+				
+				
+				<div class="col-c">
+					<div class="card" style="width: 18rem; margin: 20px">
+						<img class="card-img-top" alt="imagen de internet"	src="https://cdn-icons-png.flaticon.com/512/195/195128.png">
+						<div class="card-body" style="background-color: black; color: white; border-radius:0px 0px 35px 35px; border:bl solid;">
+							<h3 th:text="${star.nombre}" class="card-title"></h3>							
+							<p th:text="${star.descripcion}" class="card-text"></p>							
+							<a th:if="${usuario.voto lt 3}" th:href="@{/votacion/eleccion2/}+${star.codigo}+'/'+${usuario.email}" 
+							 class="btn btn-danger" style="padding-left:15px; padding-right: 15px;">Votar</a>
+						</div>
+					</div>
+				</div>
+
+			</div>
+				
+		</div>
+		
+		<div class="container"> 
+			<a th:href="@{/candidato/estado}" class="btn btn-danger" style="padding: 25px; background-color: red;">Ver Votacion</a>
+		</div>
+	</div>
+
+	
+
+	
+</body>
+</html>
